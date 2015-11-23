@@ -1,0 +1,20 @@
+os:
+  - linux
+  - osx
+sudo: false
+language: go
+go:
+  - 1.5
+  - 1.4
+env:
+  global:
+    secure: RjgMl7u2hm333Wp/J34Pvv02DG0WK9uTSrMMYPP8mnlMaDol291ykoWpIaPqgiYmRzIUVLfViN4F3L13ZvOKUWpOvVOUJmvhyXDhQ/Xa6DNi+3bQJJgowh2+p0uZsFnQ2/jRP5Njjon/WznOxkqrWuJyq5ZO1z3lGxfySUC04RG3nxD0LR1s+8CQAPxgyatR+jVpYDy3Qtx0djc+zsEJ4gneRCEDCRBDWkqYaZ8U48DktL1iA2E+WIOmIh+w+IWvKpcMyG501vrw0mjfe21nZIapUI+2bs4wc9QWBes8S0Qiqoxxs/aQotRxcLH9f7gNnDtyYDPwz79ZC6EKRvUqS3LSfyhg8kI9FL8QRlf4x4hVLgEhcWpqJWIYc5IWCarX1HZ41ZomqHSN1/c22oNdDzSNrwoCU6gei0Ac3HEGcSvixVM1tWROjhAx7/rJqNQWRHeHie8XTPFLW8jx9PfFUhrOwnSFTJz9zIZKLmSYS47UfgVT/vv4D1G2FV/6v7vGY535kFH1IYFzxI1RKw5+7U47jdh+G+MsFZTaGIlu4iOGiwR8ggv291xX6n1ozGyWUrrwIJaZW9m9yK3g1xfLeoGyn/AyelwEmyvLjn+GEXqdoSCZZdys5O8JGhAm/UyfxE+I9UuaZ9a86ZKl7uPZ2LqYgqNeQXFQw72t9whgJGw=
+before_install:
+  - go get github.com/axw/gocov/gocov
+  - go get github.com/mattn/goveralls
+  - if ! go get github.com/golang/tools/cmd/cover; then go get golang.org/x/tools/cmd/cover; fi
+script:
+  - go test -v -covermode=count -coverprofile=coverage.out ./...
+  - goveralls -coverprofile=coverage.out -service travis-ci -repotoken $COVERALLS_TOKEN
+notifications:
+  email: false
