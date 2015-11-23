@@ -1,4 +1,4 @@
-# dots
+# dots [![Build Status](https://travis-ci.org/ayatk/dots.svg?branch=master)](https://travis-ci.org/ayatk/dots) [![Coverage Status](https://coveralls.io/repos/ayatk/dots/badge.svg?branch=master&service=github)](https://coveralls.io/github/ayatk/dots?branch=master)
 
 ## Usage
 install dotfiles:
