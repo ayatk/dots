@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "github.com/ayatk/dots/cmd"
 
 func main() {
-	fmt.Println("テストだよ(・∀・)")
+	cmd.DotsCmd.Execute()
 }
